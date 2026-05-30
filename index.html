@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chi's Luxe Beauties — Be. You. Tiful</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plum:#3a1f33;--plum-deep:#2a1525;--wine:#6e2b4e;--rose:#c98f9c;
+  --champagne:#d9b88a;--gold:#c39b5b;--cream:#f7efe6;--cream-2:#efe2d3;
+  --ink:#22151e;--muted:#7b6a72;--line:rgba(58,31,51,.14);
+  --shadow:0 24px 60px -28px rgba(42,21,37,.45);--radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E")}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;line-height:1.05;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
+.eyebrow{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.btn{font-family:'Jost',sans-serif;cursor:pointer;border:none;border-radius:100px;padding:14px 30px;font-size:.92rem;
+  letter-spacing:.04em;font-weight:500;transition:transform .25s,box-shadow .25s,background .25s;display:inline-flex;align-items:center;gap:9px}
+.btn-primary{background:var(--plum);color:var(--cream)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(58,31,51,.6);background:var(--wine)}
+.btn-gold{background:linear-gradient(120deg,var(--champagne),var(--gold));color:var(--plum-deep)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(195,155,91,.7)}
+.btn-ghost{background:transparent;border:1.5px solid var(--plum);color:var(--plum)}
+.btn-ghost:hover{background:var(--plum);color:var(--cream)}
+.btn-sm{padding:9px 18px;font-size:.82rem}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+header{position:sticky;top:0;z-index:60;backdrop-filter:blur(10px);background:rgba(247,239,230,.82);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.brand{display:flex;align-items:center;gap:13px}
+.brand .mark{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 32% 30%,var(--champagne),var(--wine) 70%);
+  display:grid;place-items:center;color:var(--cream);font-family:'Fraunces',serif;font-size:1.25rem;font-weight:600;box-shadow:inset 0 0 0 2px rgba(247,239,230,.3);overflow:hidden}
+.brand .mark img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.acuity-frame{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.acuity-frame iframe{display:block;width:100%;min-height:820px;border:0}
+.brand b{font-family:'Fraunces',serif;font-size:1.28rem;font-weight:600;letter-spacing:-.01em;line-height:1}
+.brand span{display:block;font-size:.58rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-top:3px}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:.86rem;letter-spacing:.06em;position:relative;padding:4px 0}
+.nav-links a:not(.cart-btn):not(.owner-link)::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--gold);transition:width .3s}
+.nav-links a:not(.cart-btn):not(.owner-link):hover::after{width:100%}
+.cart-btn{display:flex;align-items:center;gap:7px;background:var(--plum);color:var(--cream);padding:9px 16px;border-radius:100px;cursor:pointer;font-size:.84rem;transition:background .25s}
+.cart-btn:hover{background:var(--wine)}
+.cart-count{background:var(--gold);color:var(--plum-deep);border-radius:50%;width:19px;height:19px;display:grid;place-items:center;font-size:.72rem;font-weight:600}
+.owner-link{font-size:.74rem;color:var(--muted);letter-spacing:.1em}
+.owner-link:hover{color:var(--plum)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
+.burger span{width:24px;height:2px;background:var(--plum);transition:.3s}
+.hero{position:relative;padding:88px 0 96px;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-120px;right:-140px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(201,143,156,.4),transparent 65%);z-index:0}
+.hero::after{content:"";position:absolute;bottom:-160px;left:-120px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(217,184,138,.38),transparent 65%);z-index:0}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.7rem,6vw,4.6rem);margin:18px 0 22px}
+.hero h1 em{font-style:italic;color:var(--wine)}
+.hero p.lead{font-size:1.1rem;color:var(--muted);max-width:480px;margin-bottom:32px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-visual{position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:linear-gradient(160deg,var(--wine),var(--plum-deep));box-shadow:var(--shadow)}
+.hero-visual .ring{position:absolute;border-radius:50%;border:1px solid rgba(217,184,138,.45)}
+.hero-visual .r1{inset:8%}.hero-visual .r2{inset:20%}.hero-visual .r3{inset:32%}
+.hero-visual .glyph{position:absolute;inset:0;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:9rem;color:rgba(247,239,230,.16);font-style:italic;text-align:center;line-height:.9}
+.hero-visual .glyph small{display:block;font-size:1.1rem;letter-spacing:.3em;font-style:normal;color:rgba(247,239,230,.4);margin-top:6px}
+.hero-visual .tag{position:absolute;bottom:26px;left:26px;right:26px;background:rgba(247,239,230,.95);border-radius:14px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+.hero-visual .tag small{color:var(--muted);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase}
+.hero-visual .tag b{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--plum)}
+.hero-stats{display:flex;gap:34px;margin-top:38px}
+.hero-stats div b{font-family:'Fraunces',serif;font-size:1.8rem;color:var(--plum);display:block}
+.hero-stats div small{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+section{position:relative;z-index:1}
+.section{padding:80px 0}
+.section-head{text-align:center;max-width:640px;margin:0 auto 40px}
+.section-head h2{font-size:clamp(2rem,4.4vw,3.1rem);margin:14px 0}
+.section-head p{color:var(--muted)}
+.cat-tabs{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.cat-tab{border:1px solid var(--line);background:rgba(255,255,255,.5);border-radius:100px;padding:9px 18px;cursor:pointer;
+  font-family:'Jost';font-size:.82rem;letter-spacing:.03em;color:var(--muted);transition:.25s}
+.cat-tab:hover{border-color:var(--gold);color:var(--plum)}
+.cat-tab.active{background:var(--plum);color:var(--cream);border-color:var(--plum)}
+.cat-block .cat-name{display:flex;align-items:baseline;gap:14px;margin-bottom:22px}
+.cat-block .cat-name h3{font-size:1.7rem;color:var(--plum)}
+.cat-block .cat-name .line{flex:1;height:1px;background:var(--line)}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.svc-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden}
+.svc-card::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(var(--champagne),var(--wine));opacity:0;transition:.3s;z-index:2}
+.svc-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.svc-card:hover::before{opacity:1}
+.svc-img{height:190px;background-size:cover;background-position:center;background-repeat:no-repeat}
+.svc-img.placeholder{display:grid;place-items:center;font-family:'Fraunces',serif;font-size:2.6rem;color:rgba(247,239,230,.9)}
+.svc-body{padding:18px 22px 20px;display:flex;flex-direction:column;flex:1}
+.svc-card h4{font-size:1.18rem;margin-bottom:6px}
+.svc-card .meta{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.svc-card .desc{font-size:.9rem;color:var(--muted);margin-bottom:18px;flex:1}
+.svc-card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;gap:10px}
+.svc-card .price{font-family:'Fraunces',serif;font-size:1.4rem;color:var(--plum);line-height:1}
+.svc-card .price small{font-size:.7rem;color:var(--muted);font-family:'Jost';display:block;letter-spacing:.05em}
+#shop{background:linear-gradient(180deg,transparent,rgba(239,226,211,.6),transparent)}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px}
+.prod-card{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
+.prod-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.prod-img{aspect-ratio:1;position:relative;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:3.6rem;color:rgba(247,239,230,.7)}
+.prod-card .body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.prod-card .tagline{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.prod-card h4{font-size:1.08rem;margin-bottom:8px}
+.prod-card .pdesc{font-size:.85rem;color:var(--muted);margin-bottom:16px;flex:1}
+.prod-card .pfoot{display:flex;align-items:center;justify-content:space-between}
+.prod-card .pprice{font-family:'Fraunces',serif;font-size:1.32rem;color:var(--plum)}
+#about{padding:84px 0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-grid h2{font-size:clamp(2rem,4vw,2.9rem);margin-bottom:20px}
+.about-grid p{color:var(--muted);margin-bottom:16px}
+.values{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.value{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+.value .ico{font-size:1.4rem;margin-bottom:8px}
+.value b{display:block;font-family:'Fraunces',serif;font-size:1.02rem;margin-bottom:4px}
+.value small{color:var(--muted);font-size:.84rem}
+#policy{padding:78px 0;background:var(--cream-2)}
+.policy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:34px}
+.policy-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+.policy-card h4{font-size:1.15rem;color:var(--plum);margin-bottom:12px;display:flex;align-items:center;gap:9px}
+.policy-card ul{list-style:none}
+.policy-card li{font-size:.88rem;color:var(--muted);padding-left:18px;position:relative;margin-bottom:9px}
+.policy-card li::before{content:"◆";position:absolute;left:0;color:var(--gold);font-size:.6rem;top:4px}
+.deposit-banner{background:var(--plum);color:var(--cream);border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between;margin-top:24px}
+.deposit-banner b{font-family:'Fraunces',serif;font-size:1.5rem}
+.deposit-banner .big{font-family:'Fraunces',serif;font-size:2.6rem;color:var(--champagne);line-height:1}
+#contact{background:var(--plum);color:var(--cream);padding:80px 0;position:relative;overflow:hidden}
+#contact::before{content:"";position:absolute;top:-100px;right:-100px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(195,155,91,.3),transparent 65%)}
+#contact .eyebrow{color:var(--champagne)}
+#contact h2{font-size:clamp(2rem,4vw,2.9rem);color:var(--cream);margin:12px 0 18px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.contact-info p{color:rgba(247,239,230,.75);margin-bottom:22px;max-width:380px}
+.contact-info .row{display:flex;gap:12px;align-items:center;margin-bottom:14px;font-size:.95rem}
+.contact-info .row span:first-child{color:var(--champagne)}
+.contact-card{background:rgba(247,239,230,.07);border:1px solid rgba(217,184,138,.3);border-radius:20px;padding:34px}
+.contact-card h3{color:var(--cream);font-size:1.5rem;margin-bottom:10px}
+.contact-card p{color:rgba(247,239,230,.7);font-size:.92rem;margin-bottom:22px}
+footer{background:var(--plum-deep);color:rgba(247,239,230,.6);padding:44px 0 30px;font-size:.85rem}
+.foot-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;padding-bottom:26px;border-bottom:1px solid rgba(217,184,138,.18);margin-bottom:24px}
+.foot-top .brand b{color:var(--cream)}
+.foot-social{display:flex;gap:14px}
+.foot-social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(217,184,138,.3);display:grid;place-items:center;transition:.25s;color:var(--champagne)}
+.foot-social a:hover{background:var(--champagne);color:var(--plum-deep)}
+.overlay{position:fixed;inset:0;background:rgba(34,21,30,.6);backdrop-filter:blur(4px);z-index:90;opacity:0;visibility:hidden;transition:.3s}
+.overlay.open{opacity:1;visibility:visible}
+.modal{position:fixed;z-index:100;background:var(--cream);border-radius:24px;width:min(560px,92vw);max-height:90vh;overflow:auto;top:50%;left:50%;transform:translate(-50%,-46%) scale(.96);opacity:0;visibility:hidden;transition:.32s;box-shadow:var(--shadow)}
+.modal.open{transform:translate(-50%,-50%) scale(1);opacity:1;visibility:visible}
+.modal-head{padding:24px 30px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--cream);z-index:2}
+.modal-head h3{font-size:1.45rem;color:var(--plum)}
+.modal-head .sub{font-size:.85rem;color:var(--muted);margin-top:3px}
+.modal-close{position:absolute;top:20px;right:24px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--muted);line-height:1}
+.modal-body{padding:22px 30px 28px}
+.steps{display:flex;gap:6px;padding:0 30px 16px}
+.steps .step{flex:1;height:4px;border-radius:4px;background:var(--line)}
+.steps .step.done{background:var(--gold)}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:.8rem;letter-spacing:.05em;color:var(--plum);margin-bottom:6px;font-weight:500}
+.field input,.field textarea,.field select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font-family:'Jost';font-size:.95rem;background:#fff;color:var(--ink)}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(195,155,91,.18)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:6px}
+.slot{padding:10px 4px;text-align:center;border:1px solid var(--line);border-radius:10px;cursor:pointer;font-size:.84rem;transition:.2s;background:#fff}
+.slot:hover{border-color:var(--gold)}
+.slot.sel{background:var(--plum);color:var(--cream);border-color:var(--plum)}
+.summary-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--line);font-size:.93rem;gap:12px}
+.summary-row.total{border-bottom:none;border-top:2px solid var(--plum);margin-top:6px;padding-top:14px;font-family:'Fraunces',serif;font-size:1.18rem;color:var(--plum)}
+.note{background:rgba(195,155,91,.12);border:1px solid rgba(195,155,91,.3);border-radius:12px;padding:12px 15px;font-size:.82rem;color:var(--plum);margin:8px 0 16px}
+.agree{display:flex;gap:9px;align-items:flex-start;font-size:.83rem;color:var(--muted);margin:4px 0 16px;cursor:pointer}
+.agree input{width:auto;margin-top:3px;flex-shrink:0}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100vw);background:var(--cream);z-index:100;transform:translateX(105%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.drawer.open{transform:translateX(0)}
+.drawer-head{padding:24px 26px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.drawer-head h3{font-size:1.4rem;color:var(--plum)}
+.drawer-body{flex:1;overflow:auto;padding:18px 26px}
+.cart-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.cart-item .thumb{width:58px;height:58px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;font-family:'Fraunces',serif;color:var(--cream);font-size:1.4rem}
+.cart-item .ci-info{flex:1}
+.cart-item .ci-info b{font-size:.95rem;display:block}
+.cart-item .ci-info small{color:var(--muted);font-size:.8rem}
+.qty{display:flex;align-items:center;gap:8px;margin-top:7px}
+.qty button{width:24px;height:24px;border:1px solid var(--line);background:#fff;border-radius:6px;cursor:pointer;font-size:.95rem}
+.cart-item .ci-price{font-family:'Fraunces',serif;color:var(--plum);font-size:1.05rem}
+.cart-empty{text-align:center;color:var(--muted);padding:50px 0}
+.drawer-foot{padding:22px 26px;border-top:1px solid var(--line)}
+.drawer-foot .tot{display:flex;justify-content:space-between;margin-bottom:16px;font-family:'Fraunces',serif;font-size:1.3rem;color:var(--plum)}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(120%);z-index:200;background:var(--plum);color:var(--cream);padding:14px 26px;border-radius:100px;font-size:.9rem;box-shadow:var(--shadow);transition:transform .4s cubic-bezier(.2,.8,.2,1);display:flex;gap:10px;align-items:center}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.dash-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}
+.dash-stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+.dash-stat b{font-family:'Fraunces',serif;font-size:1.6rem;color:var(--plum);display:block}
+.dash-stat small{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.dash-tabs{display:flex;gap:8px;margin-bottom:20px}
+.dash-tab{padding:9px 18px;border-radius:100px;border:1px solid var(--line);background:#fff;cursor:pointer;font-family:'Jost';font-size:.85rem}
+.dash-tab.active{background:var(--plum);color:var(--cream);border-color:var(--plum)}
+.record{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px}
+.record .r-top{display:flex;justify-content:space-between;align-items:start;gap:10px}
+.record .r-top b{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--plum)}
+.record .r-meta{font-size:.85rem;color:var(--muted);margin-top:4px;line-height:1.5}
+.badge{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;background:rgba(195,155,91,.18);color:#8a6a2e;white-space:nowrap}
+.badge.paid{background:rgba(86,150,90,.18);color:#3c7a40}
+.dash-empty{text-align:center;color:var(--muted);padding:40px 0}
+.dash-actions{display:flex;gap:14px;margin-top:8px}
+.link-btn{background:none;border:none;color:var(--wine);cursor:pointer;font-size:.82rem;text-decoration:underline;font-family:'Jost'}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:1024px){
+  .section{padding:64px 0}
+  .hero{padding:62px 0 70px}
+  #about,#policy,#contact{padding:64px 0}
+  .hero-grid{gap:38px}
+}
+@media(max-width:900px){
+  .wrap{padding:0 22px}
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-visual{max-width:360px;margin:0 auto;width:100%}
+  .nav-links{position:fixed;top:0;right:0;height:100%;width:min(300px,82vw);background:var(--cream);flex-direction:column;
+    padding:88px 28px;transform:translateX(105%);transition:.35s;box-shadow:var(--shadow);z-index:70;align-items:flex-start;gap:22px}
+  .nav-links.open{transform:translateX(0)}
+  .burger{display:flex;z-index:80}
+  .values,.policy-grid,.dash-stats{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr}
+  .prod-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .cat-tabs{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  .cat-tab{flex:0 0 auto}
+  .slots{grid-template-columns:repeat(3,1fr)}
+  .modal-body{padding:20px 22px 24px}
+  .modal-head,.steps{padding-left:22px;padding-right:22px}
+  .acuity-frame iframe{min-height:760px}
+}
+@media(max-width:560px){
+  .wrap{padding:0 16px}
+  .section{padding:52px 0}
+  .hero{padding:42px 0 54px}
+  #about,#policy,#contact{padding:52px 0}
+  .nav{padding:13px 0}
+  .brand b{font-size:1.12rem}
+  .brand span{font-size:.52rem;letter-spacing:.28em}
+  .brand .mark{width:40px;height:40px;font-size:1.1rem}
+  .hero h1{margin:14px 0 18px}
+  .hero p.lead{font-size:1rem;margin-bottom:26px}
+  .hero-cta{gap:10px}
+  .hero-cta .btn{flex:1 1 auto;justify-content:center}
+  .hero-stats{gap:20px;flex-wrap:wrap;margin-top:30px}
+  .hero-stats div b{font-size:1.5rem}
+  .section-head{margin-bottom:30px}
+  .btn{padding:13px 22px}
+  .prod-grid{grid-template-columns:1fr}
+  .deposit-banner{flex-direction:column;text-align:center;gap:14px}
+  .slots{grid-template-columns:repeat(2,1fr)}
+  .drawer{width:100vw}
+  .foot-top{flex-direction:column;align-items:flex-start}
+  .policy-card{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#home" class="brand"><div class="mark">C</div>
+      <div><b>Chi's Luxe Beauties</b><span>Be. You. Tiful</span></div></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#services" onclick="closeMenu()">Services</a>
+      <a href="#booking" onclick="closeMenu()">Book</a>
+      <a href="#shop" onclick="closeMenu()">Shop</a>
+      <a href="#policy" onclick="closeMenu()">Booking Info</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+      <a class="cart-btn" onclick="openCart();closeMenu()"><span>Bag</span><span class="cart-count" id="cartCount">0</span></a>
+    </nav>
+    <button class="burger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <span class="eyebrow">Chi's Luxe Beauties</span>
+      <h1>Where your hair becomes a <em>statement</em>.</h1>
+      <p class="lead">Braids, locs, installs, twists, glam and more — book your seat with Chi online, or shop luxe hair care delivered to your door. A £10 deposit secures your slot.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" onclick="document.getElementById('booking').scrollIntoView()">Book an appointment</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('shop').scrollIntoView()">Shop hair care</button>
+      </div>
+      <div class="hero-stats">
+        <div><b>50+</b><small>Signature styles</small></div>
+        <div><b>£10</b><small>Deposit to book</small></div>
+        <div><b>4.9★</b><small>Client rating</small></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+      <div class="glyph">C<small>BE. YOU. TIFUL</small></div>
+      <div class="tag"><div><small>Online booking only</small><b>Reserve your seat</b></div>
+        <button class="btn btn-gold btn-sm" onclick="document.getElementById('services').scrollIntoView()">Book</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Appointments</span>
+      <h2>Our Services</h2>
+      <p>Choose a category, pick your style and time, then pay your £10 deposit. Prices shown are <b>base prices</b> — final cost depends on the length, size &amp; thickness add-ons chosen at your appointment.</p>
+    </div>
+    <div class="cat-tabs reveal" id="catTabs"></div>
+    <div id="servicesList"></div>
+  </div>
+</section>
+
+<section class="section" id="booking">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Reserve Your Seat</span>
+      <h2>Book Your Appointment</h2>
+      <p>Choose your style and time below. A £10 deposit secures your slot, and you'll receive an instant email confirmation — your appointment is added to the studio calendar automatically.</p>
+    </div>
+    <div class="acuity-frame reveal">
+      <!-- Acuity scheduler (account 37817800). Deposits, client + owner confirmation emails and calendar sync are all handled here. -->
+      <iframe src="https://app.acuityscheduling.com/schedule.php?owner=37817800" title="Schedule an appointment with Chi's Luxe Beauties" width="100%" height="820" frameborder="0"></iframe>
+    </div>
+  </div>
+  <script src="https://embed.acuityscheduling.com/js/embed.js" async></script>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Boutique</span>
+      <h2>Shop Luxe Hair Care</h2>
+      <p>Oils, wigs, accessories and the tools to keep your crown thriving between visits. <i>(Sample products — send Chi your real range to swap in.)</i></p>
+    </div>
+    <div class="cat-tabs reveal" id="shopFilters"></div>
+    <div class="prod-grid" id="productGrid"></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="eyebrow">The Studio</span>
+      <h2>Artistry, care &amp; a little luxury</h2>
+      <p>Chi's Luxe Beauties is a boutique hair studio built on one belief — that great hair is self-care. Every appointment is unhurried, every style is tailored, and every client leaves feeling like the best version of themselves.</p>
+      <p>From protective braids and locs to flawless installs, glam and colour, your look is created with healthy hair at heart.</p>
+      <button class="btn btn-primary" onclick="document.getElementById('services').scrollIntoView()" style="margin-top:8px">Book your visit</button>
+    </div>
+    <div class="values reveal">
+      <div class="value"><div class="ico">✦</div><b>Tailored styling</b><small>Every style fits your hair, length and lifestyle.</small></div>
+      <div class="value"><div class="ico">♥</div><b>Healthy hair first</b><small>Protective techniques that care for the hair underneath.</small></div>
+      <div class="value"><div class="ico">⌖</div><b>Clean, calm space</b><small>A sanitised studio — your comfort comes first.</small></div>
+      <div class="value"><div class="ico">✺</div><b>By appointment</b><small>Online booking only, so you're never rushed.</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="policy">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-bottom:8px">
+      <span class="eyebrow">Before You Book</span>
+      <h2>Booking &amp; Refund Policy</h2>
+      <p>To maintain our luxury standards and a seamless experience, please read carefully before booking.</p>
+    </div>
+    <div class="deposit-banner reveal">
+      <div><b>Secure your appointment</b><div style="opacity:.8;font-size:.9rem;margin-top:4px">Non-refundable, deducted from your final bill.</div></div>
+      <div style="text-align:center"><span class="big">£10</span><div style="font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;opacity:.8">Deposit</div></div>
+    </div>
+    <div class="policy-grid reveal">
+      <div class="policy-card"><h4>◷ Appointments</h4><ul>
+        <li>Strictly online booking only — walk-ins are not accepted.</li>
+        <li>Please arrive 10 minutes early.</li>
+        <li>Hair must be clean, detangled and product-free, unless a wash service is booked.</li>
+        <li>A confirmation with full details is sent to you by email.</li>
+      </ul></div>
+      <div class="policy-card"><h4>£ Pricing &amp; Deposits</h4><ul>
+        <li>A £10 non-refundable deposit is required to secure your slot, deducted from your final bill.</li>
+        <li>All prices shown are base prices only.</li>
+        <li>Size, length &amp; thickness are selected as add-ons; final price depends on these.</li>
+        <li>The remaining balance is due on the day of your appointment.</li>
+      </ul></div>
+      <div class="policy-card"><h4>↻ Reschedules &amp; Cancellations</h4><ul>
+        <li>Reschedule more than 48 hours before your appointment.</li>
+        <li>Changes within 48 hours result in loss of deposit; same-day reschedules aren't permitted.</li>
+        <li>No-shows require a new deposit to rebook.</li>
+        <li>No refunds on deposits, completed services, or personal preference — please raise any concerns during your appointment.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info reveal">
+      <span class="eyebrow">Get in touch</span>
+      <h2>Come say hello</h2>
+      <p>Questions before booking? Reach out and Chi will get back to you.</p>
+      <div class="row"><span>✉</span><span>chisluxebeauties@cohg.uk</span></div>
+      <div class="row"><span>⌖</span><span>United Kingdom</span></div>
+      <div class="row"><span>◷</span><span>By appointment — online booking only</span></div>
+    </div>
+    <div class="contact-card reveal">
+      <h3>Ready for a fresh look?</h3>
+      <p>Reserve your seat in under a minute. Browse styles, pick a time, and pay your £10 deposit securely.</p>
+      <button class="btn btn-gold" onclick="document.getElementById('booking').scrollIntoView()">Book now</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="brand"><div class="mark">C</div><div><b>Chi's Luxe Beauties</b><span>Be. You. Tiful</span></div></div>
+      <div class="foot-social"><a href="#" title="Instagram">◎</a><a href="#" title="TikTok">♪</a><a href="#" title="Facebook">f</a></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+      <span>© <span id="yr"></span> Chi's Luxe Beauties. All rights reserved.</span>
+      <span>chisluxebeauties@cohg.uk</span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+<div class="modal" id="bookModal">
+  <div class="modal-head"><h3 id="bookTitle">Book appointment</h3><div class="sub" id="bookSub"></div>
+    <button class="modal-close" onclick="closeAll()">×</button></div>
+  <div class="steps"><div class="step" id="bs1"></div><div class="step" id="bs2"></div><div class="step" id="bs3"></div></div>
+  <div class="modal-body" id="bookBody"></div>
+</div>
+
+<div class="drawer" id="cartDrawer">
+  <div class="drawer-head"><h3>Your Bag</h3><button class="modal-close" style="position:static" onclick="closeAll()">×</button></div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot" id="cartFoot"></div>
+</div>
+
+<div class="modal" id="checkoutModal">
+  <div class="modal-head"><h3>Checkout</h3><div class="sub">Complete your order</div>
+    <button class="modal-close" onclick="closeAll()">×</button></div>
+  <div class="modal-body" id="checkoutBody"></div>
+</div>
+
+<div class="modal" id="ownerModal">
+  <div class="modal-head"><h3>Owner Dashboard</h3><div class="sub">Monitor bookings &amp; orders</div>
+    <button class="modal-close" onclick="closeAll()">×</button></div>
+  <div class="modal-body" id="ownerBody"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   1. CONFIG  —  EDIT THESE LINES TO GO LIVE
+   ============================================================ */
+const CONFIG = {
+  currency: "£",
+  // LOGO — paste your logo file here, e.g. "images/logo.png" (leave "" to use the C monogram).
+  logo: "",
+  // Your Acuity account ID — the booking widget below uses this.
+  acuityOwnerId: "37817800",
+  deposit: 10,            // £10 deposit to secure a booking (deducted from final bill)
+  // (A) PAYMENTS — paste ONE link to take the deposit/payment for real (no server needed):
+  //     Stripe Payment Link  "https://buy.stripe.com/xxxx"  OR  PayPal.Me "https://paypal.me/chisluxebeauties"
+  //     Leave "" for DEMO mode (records the booking/order, takes no money).
+  paymentLink: "",
+  // (B) MONITOR FROM ANY DEVICE (optional) — paste a free Formspree endpoint to email yourself every booking/order:
+  formspreeEndpoint: "",  // e.g. "https://formspree.io/f/xxxxxxx"
+  // (C) OWNER DASHBOARD PASSCODE — change this!
+  ownerPasscode: "luxe2025"
+};
+
+/* ============================================================
+   2. SERVICES  —  pulled from your live menu. Edit freely.
+   TO ADD A PHOTO to any service, add an  img:"..."  to that item,
+   pointing to a photo in an "images" folder next to this file, e.g.
+       { name:"Goddess Braids", dur:"4 hrs", price:80, img:"images/goddess.jpg", desc:"" }
+   (You can also paste a full web link, e.g. img:"https://...jpg")
+   ============================================================ */
+const SERVICES = [
+  { cat:"Bridal Services", items:[
+    { name:"Bridal Makeover + Hairstyling", dur:"4 hrs", price:400, img:"", desc:"Full bridal glam and hairstyling tailored to your wedding look." },
+    { name:"Additional Bridesmaid", dur:"1 hr", price:70, desc:"Per head." },
+  ]},
+  { cat:"Cornrows (With Extension)", items:[
+    { name:"Cornrow Rasta", dur:"3 hrs", price:100, desc:"Neat, long-lasting cornrows with extensions for added length and fullness." },
+    { name:"Freestyling Cornrows", dur:"3 hrs", price:70, desc:"" },
+    { name:"Lemonades / Fulani / Half Up", dur:"4 hrs", price:75, desc:"" },
+    { name:"Shuku Braids", dur:"3 hrs", price:85, desc:"Neat, long-lasting cornrows with extensions for added length and fullness." },
+  ]},
+  { cat:"Cornrows (Without Extensions)", items:[
+    { name:"Wig Cornrows", dur:"40 min", price:20, desc:"Clean, natural cornrows styled directly on your hair for a sleek, low-maintenance look." },
+    { name:"Stitch Cornrows", dur:"1 hr", price:35, desc:"Clean, natural cornrows for a sleek, low-maintenance look." },
+    { name:"Freestyling Cornrows", dur:"1 hr", price:30, desc:"Clean, natural cornrows for a sleek, low-maintenance look." },
+  ]},
+  { cat:"Knotless Braids", items:[
+    { name:"Baby Knotless", dur:"2 hrs", price:60, desc:"" },
+    { name:"French Curls / Spiral Braids", dur:"4 hrs", price:90, desc:"" },
+    { name:"Expression / Ultra Extensions", dur:"3 hrs", price:75, desc:"Lightweight, tension-free braids for a natural finish and comfortable wear." },
+  ]},
+  { cat:"Goddess / Boho Knotless", items:[
+    { name:"Boohoo Braids", dur:"4 hrs", price:95, desc:"" },
+    { name:"Goddess Braids", dur:"4 hrs", price:80, desc:"" },
+    { name:"Pick & Drop", dur:"3 hrs 30 min", price:95, desc:"" },
+    { name:"Bantu Knots", dur:"1 hr", price:50, desc:"" },
+    { name:"Crotchet", dur:"2 hrs 30 min", price:65, desc:"" },
+  ]},
+  { cat:"Twists", items:[
+    { name:"Marley Twist", dur:"3 hrs 30 min", price:90, desc:"" },
+    { name:"Comb Twist", dur:"1 hr 30 min", price:50, desc:"" },
+    { name:"Senegalese Twist", dur:"4 hrs", price:100, desc:"" },
+    { name:"Passion Twist", dur:"3 hrs 30 min", price:80, desc:"" },
+    { name:"Two Strand / Pluck Twist", dur:"1 hr 20 min", price:45, desc:"" },
+    { name:"Kinky Twist", dur:"3 hrs 30 min", price:75, desc:"" },
+  ]},
+  { cat:"Locs", items:[
+    { name:"Faux Locs", dur:"3 hrs", price:90, desc:"" },
+    { name:"Butterfly Locs", dur:"3 hrs", price:90, desc:"" },
+    { name:"Starter Locs", dur:"4 hrs", price:180, desc:"" },
+    { name:"Sister Locs / Micro Locs", dur:"5 hrs", price:300, desc:"" },
+    { name:"Palm Rolls", dur:"2 hrs", price:80, desc:"" },
+    { name:"Comb Locs", dur:"1 hr 30 min", price:60, desc:"" },
+    { name:"Dread / Relocking", dur:"2 hrs", price:85, desc:"" },
+    { name:"Inter Loc / Repair", dur:"2 hrs", price:95, desc:"" },
+    { name:"Barrel Twist", dur:"1 hr 30 min", price:55, desc:"" },
+    { name:"Restyling", dur:"1 hr", price:50, desc:"" },
+    { name:"Detoxing", dur:"1 hr", price:50, desc:"" },
+  ]},
+  { cat:"Lace Install", items:[
+    { name:"Frontal Ponytail", dur:"2 hrs", price:60, desc:"" },
+    { name:"Double Lace Install", dur:"2 hrs", price:75, desc:"" },
+    { name:"Frontal Install", dur:"2 hrs", price:50, desc:"" },
+    { name:"360 Lace Install", dur:"2 hrs", price:75, desc:"" },
+    { name:"Glueless Install / 5x5", dur:"50 min", price:50, desc:"" },
+  ]},
+  { cat:"Weaves / Sew Ins", items:[
+    { name:"Take Out Sew Ins & Refixing", dur:"2 hrs", price:110, desc:"" },
+    { name:"Closure / Kim K / Frontal Sew Ins", dur:"3 hrs", price:75, desc:"Hair leave-outs are optional." },
+    { name:"Leave Out Sew Ins", dur:"2 hrs 30 min", price:70, desc:"" },
+    { name:"Double Tracks", dur:"3 hrs", price:90, desc:"" },
+    { name:"Tonging / Straightening", dur:"40 min", price:25, desc:"" },
+  ]},
+  { cat:"Colouring / Revamping", items:[
+    { name:"Bleaching / Taps", dur:"3 hrs", price:120, desc:"" },
+    { name:"Own Colour", dur:"2 hrs", price:50, desc:"" },
+    { name:"Wig Revamping", dur:"1 hr", price:30, desc:"" },
+  ]},
+  { cat:"Glam Services", items:[
+    { name:"Birthday Glam Beat", dur:"1 hr 20 min", price:60, desc:"Full glam, camera-ready look for celebrations and special moments." },
+    { name:"Soft Glam Beat", dur:"1 hr 20 min", price:55, desc:"Light, radiant, blended glam with a natural finish." },
+    { name:"Casual Glam Beat", dur:"1 hr 20 min", price:45, desc:"Polished, effortless glam for outings, date nights, or events." },
+  ]},
+  { cat:"Creative / Themed Looks", items:[
+    { name:"Fantasy / Halloween Glam", dur:"1 hr 20 min", price:60, desc:"Creative, artistic makeup for themed events, Halloween, photoshoots, or statement looks." },
+  ]},
+  { cat:"Kids Plait & Braids", items:[
+    { name:"Natural Hair", dur:"1 hr", price:30, desc:"" },
+    { name:"Kids Cornrows With Extension", dur:"1 hr 30 min", price:48, desc:"" },
+  ]},
+  { cat:"Men's Plait", items:[
+    { name:"Men's Plaits", dur:"1 hr", price:35, desc:"" },
+  ]},
+  { cat:"Salon Services", items:[
+    { name:"Wash & Blowdry", dur:"1 hr 20 min", price:25, desc:"A luxury wash finished with a sleek, flawless blow-dry." },
+    { name:"Wash & Treatment", dur:"2 hrs", price:35, desc:"A nourishing wash and conditioning treatment." },
+    { name:"Sleek Ponytail", dur:"1 hr 20 min", price:60, desc:"" },
+    { name:"Pixie Cut / Mouse Wrap & Trim", dur:"1 hr 30 min", price:45, desc:"" },
+    { name:"Trim & Blow Dry", dur:"40 min", price:30, desc:"" },
+    { name:"Cutting / Fringe / Style", dur:"40 min", price:35, desc:"" },
+    { name:"Curl / Defining / Style", dur:"1 hr", price:30, desc:"" },
+    { name:"Detangling", dur:"40 min", price:25, desc:"" },
+  ]},
+];
+
+/* ============================================================
+   3. PRODUCTS  —  sample range. Swap in your real products.
+   ============================================================ */
+const PRODUCTS = [
+  { name:"Luxe Growth Hair Oil", cat:"Oils", price:18, tag:"Best seller", desc:"Rosemary & castor blend to nourish the scalp.", c1:"#6e2b4e", c2:"#3a1f33", glyph:"❋" },
+  { name:"Edge Control Pomade", cat:"Styling", price:9, tag:"Salon staple", desc:"Strong, flake-free hold for sleek edges.", c1:"#c39b5b", c2:"#6e2b4e", glyph:"◗" },
+  { name:"Body Wave Lace Wig", cat:"Wigs", price:160, tag:"Premium", desc:"100% human hair, pre-plucked HD lace.", c1:"#3a1f33", c2:"#22151e", glyph:"§" },
+  { name:"Silk Bonnet (Reversible)", cat:"Accessories", price:14, tag:"Protect your style", desc:"Double-lined pure silk to keep styles fresh.", c1:"#c98f9c", c2:"#6e2b4e", glyph:"☾" },
+  { name:"Hydrating Leave-In Spray", cat:"Care", price:15, tag:"Daily moisture", desc:"Lightweight detangling and curl refresh.", c1:"#6e2b4e", c2:"#c98f9c", glyph:"❀" },
+  { name:"Straight Lace Front Wig", cat:"Wigs", price:175, tag:"Premium", desc:"Sleek 24\" human hair unit, ready to install.", c1:"#22151e", c2:"#3a1f33", glyph:"§" },
+  { name:"Satin-Lined Wide Cap", cat:"Accessories", price:11, tag:"Comfort", desc:"Protects natural hair under wigs and installs.", c1:"#c39b5b", c2:"#3a1f33", glyph:"◐" },
+  { name:"Repair & Strength Mask", cat:"Care", price:22, tag:"Weekly ritual", desc:"Protein-rich deep mask for damaged hair.", c1:"#6e2b4e", c2:"#22151e", glyph:"✦" },
+];
+
+/* ============================================================
+   4. APP LOGIC
+   ============================================================ */
+const $ = s => document.querySelector(s);
+const money = n => CONFIG.currency + Number(n).toFixed(2).replace(/\.00$/,'');
+const esc = s => (s||'').replace(/'/g,"\\'");
+const store = {get:(k)=>{try{return JSON.parse(localStorage.getItem(k))||[]}catch(e){return[]}},set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
+let cart = store.get('clb_cart');
+let booking = {};
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+let activeCat = 0;
+function renderCatTabs(){
+  $('#catTabs').innerHTML = SERVICES.map((c,i)=>`<button class="cat-tab ${i===activeCat?'active':''}" onclick="activeCat=${i};renderCatTabs();renderServices()">${c.cat}</button>`).join('');
+}
+function renderServices(){
+  const c = SERVICES[activeCat];
+  $('#servicesList').innerHTML = `<div class="cat-block">
+    <div class="cat-name"><h3>${c.cat}</h3><div class="line"></div></div>
+    <div class="svc-grid">${c.items.map((s,i)=>`
+      <div class="svc-card">
+        ${s.img?`<div class="svc-img" style="background-image:url('${s.img}')"></div>`:`<div class="svc-img placeholder" style="background:linear-gradient(150deg,var(--wine),var(--plum-deep))">${c.cat.charAt(0)}</div>`}
+        <div class="svc-body">
+          <h4>${s.name}</h4>
+          <div class="meta">◷ ${s.dur}</div>
+          ${s.desc?`<div class="desc">${s.desc}</div>`:'<div style="flex:1"></div>'}
+          <div class="foot">
+            <span class="price">${money(s.price)}<small>base price</small></span>
+            <button class="btn btn-primary btn-sm" onclick="startBooking(${activeCat},${i})">Book</button>
+          </div>
+        </div>
+      </div>`).join('')}</div></div>`;
+}
+
+let activeFilter = "All";
+function renderFilters(){
+  const cats = ["All", ...new Set(PRODUCTS.map(p=>p.cat))];
+  $('#shopFilters').innerHTML = cats.map(c=>`<button class="cat-tab ${c===activeFilter?'active':''}" onclick="activeFilter='${c}';renderFilters();renderProducts()">${c}</button>`).join('');
+}
+function renderProducts(){
+  const list = activeFilter==="All"?PRODUCTS:PRODUCTS.filter(p=>p.cat===activeFilter);
+  $('#productGrid').innerHTML = list.map(p=>{const idx=PRODUCTS.indexOf(p);
+    return `<div class="prod-card">
+      <div class="prod-img" style="background:linear-gradient(150deg,${p.c1},${p.c2})">${p.glyph}</div>
+      <div class="body"><span class="tagline">${p.tag}</span><h4>${p.name}</h4>
+        <div class="pdesc">${p.desc}</div>
+        <div class="pfoot"><span class="pprice">${money(p.price)}</span>
+          <button class="btn btn-gold btn-sm" onclick="addToCart(${idx})">Add to bag</button></div></div></div>`;}).join('');
+}
+
+function addToCart(i){const p=PRODUCTS[i];const ex=cart.find(x=>x.name===p.name);
+  if(ex)ex.qty++;else cart.push({name:p.name,price:p.price,qty:1,c1:p.c1,c2:p.c2,glyph:p.glyph});
+  saveCart();toast(`${p.name} added to bag`);renderCart();}
+function changeQty(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);saveCart();renderCart();}
+function saveCart(){store.set('clb_cart',cart);$('#cartCount').textContent=cart.reduce((a,b)=>a+b.qty,0);}
+function cartTotal(){return cart.reduce((a,b)=>a+b.price*b.qty,0);}
+function renderCart(){
+  if(!cart.length){$('#cartBody').innerHTML=`<div class="cart-empty">Your bag is empty.<br><br><button class="btn btn-ghost btn-sm" onclick="closeAll();document.getElementById('shop').scrollIntoView()">Browse the boutique</button></div>`;$('#cartFoot').innerHTML='';return;}
+  $('#cartBody').innerHTML=cart.map((it,i)=>`<div class="cart-item">
+      <div class="thumb" style="background:linear-gradient(150deg,${it.c1},${it.c2})">${it.glyph}</div>
+      <div class="ci-info"><b>${it.name}</b><small>${money(it.price)} each</small>
+        <div class="qty"><button onclick="changeQty(${i},-1)">−</button><span>${it.qty}</span><button onclick="changeQty(${i},1)">+</button></div></div>
+      <div class="ci-price">${money(it.price*it.qty)}</div></div>`).join('');
+  $('#cartFoot').innerHTML=`<div class="tot"><span>Total</span><span>${money(cartTotal())}</span></div>
+    <button class="btn btn-primary" style="width:100%" onclick="openCheckout()">Checkout</button>`;
+}
+
+function startBooking(ci,ii){
+  closeAll();
+  const s=SERVICES[ci].items[ii];
+  toast('Select "'+s.name+'" in the scheduler below');
+  document.getElementById('booking').scrollIntoView({behavior:'smooth'});
+}
+function startBooking_LEGACY(ci,ii){
+  const s=SERVICES[ci].items[ii];
+  booking={service:s.name,price:s.price,dur:s.dur,cat:SERVICES[ci].cat,date:'',time:''};
+  $('#bookTitle').textContent=s.name;
+  $('#bookSub').textContent=`${SERVICES[ci].cat} · ${s.dur} · from ${money(s.price)}`;
+  openModal('#bookModal');bookStep(1);
+}
+function setSteps(n){[1,2,3].forEach(i=>$('#bs'+i).className='step'+(i<=n?' done':''));}
+function bookStep(n){
+  setSteps(n);const b=$('#bookBody');
+  if(n===1){const today=new Date().toISOString().split('T')[0];
+    b.innerHTML=`<div class="field"><label>Choose a date</label><input type="date" id="bDate" min="${today}" value="${booking.date||today}" onchange="renderSlots(this.value)"></div>
+      <div class="field"><label>Available times</label><div class="slots" id="slotWrap"></div></div>
+      <button class="btn btn-primary" style="width:100%;margin-top:8px" id="toStep2" onclick="bookStep(2)" disabled>Continue</button>`;
+    renderSlots($('#bDate').value);}
+  if(n===2){
+    b.innerHTML=`<div class="field"><label>Full name</label><input id="bName" value="${booking.name||''}" placeholder="Your name"></div>
+      <div class="field"><label>Email</label><input id="bEmail" type="email" value="${booking.email||''}" placeholder="you@email.com"></div>
+      <div class="field"><label>Phone</label><input id="bPhone" value="${booking.phone||''}" placeholder="07…"></div>
+      <div class="field"><label>Hair length / size (if applicable)</label>
+        <select id="bSize"><option value="">Standard / not applicable</option>
+          <option>Extra Small</option><option>Small</option><option>Medium</option><option>Large</option><option>Extra Large</option></select></div>
+      <div class="field"><label>Notes for Chi (optional)</label><textarea id="bNotes" rows="2" placeholder="Hair length, colour, inspo, allergies…">${booking.notes||''}</textarea></div>
+      <div style="display:flex;gap:10px"><button class="btn btn-ghost" style="flex:1" onclick="bookStep(1)">Back</button>
+        <button class="btn btn-primary" style="flex:2" onclick="validateStep2()">Review</button></div>`;
+    if(booking.size)$('#bSize').value=booking.size;
+  }
+  if(n===3){
+    const deposit=Math.min(CONFIG.deposit,booking.price);booking.deposit=deposit;
+    b.innerHTML=`<div class="summary-row"><span>Service</span><b>${booking.service}</b></div>
+      <div class="summary-row"><span>When</span><b>${fmtDate(booking.date)} · ${booking.time}</b></div>
+      ${booking.size?`<div class="summary-row"><span>Size</span><span>${booking.size}</span></div>`:''}
+      <div class="summary-row"><span>Name</span><span>${booking.name}</span></div>
+      <div class="summary-row"><span>Contact</span><span>${booking.email}</span></div>
+      <div class="summary-row"><span>Base price</span><span>from ${money(booking.price)}</span></div>
+      <div class="summary-row total"><span>Deposit to pay now</span><span>${money(deposit)}</span></div>
+      <div class="note">The <b>£10 deposit is non-refundable</b> and is deducted from your final bill. The remaining balance (from ${money(booking.price-deposit)}) is paid in-salon. Final price depends on the length / size add-ons chosen.</div>
+      <label class="agree"><input type="checkbox" id="agree"> I have read and agree to the booking &amp; refund policy.</label>
+      <div style="display:flex;gap:10px"><button class="btn btn-ghost" style="flex:1" onclick="bookStep(2)">Back</button>
+        <button class="btn btn-gold" style="flex:2" onclick="confirmBooking()">Pay ${money(deposit)} &amp; book</button></div>`;
+  }
+}
+function renderSlots(date){booking.date=date;
+  const slots=["9:00 AM","10:30 AM","12:00 PM","1:30 PM","3:00 PM","4:30 PM"];
+  $('#slotWrap').innerHTML=slots.map(s=>`<div class="slot ${booking.time===s?'sel':''}" onclick="pickSlot('${s}')">${s}</div>`).join('');
+  const btn=$('#toStep2');if(btn)btn.disabled=!booking.time;}
+function pickSlot(s){booking.time=s;renderSlots(booking.date);const btn=$('#toStep2');if(btn)btn.disabled=false;}
+function validateStep2(){
+  const name=$('#bName').value.trim(),email=$('#bEmail').value.trim(),phone=$('#bPhone').value.trim();
+  if(!name||!email||!phone){toast('Please fill in name, email and phone');return;}
+  Object.assign(booking,{name,email,phone,size:$('#bSize').value,notes:$('#bNotes').value.trim()});
+  bookStep(3);
+}
+function confirmBooking(){
+  if(!$('#agree').checked){toast('Please agree to the booking policy');return;}
+  const record={type:'booking',id:'BK-'+Date.now().toString().slice(-6),...booking,
+    paid:!!CONFIG.paymentLink,status:CONFIG.paymentLink?'Deposit paid':'Awaiting deposit',at:new Date().toISOString()};
+  saveRecord('clb_bookings',record);sendToOwner(record);
+  if(CONFIG.paymentLink)goToPayment();
+  showConfirm('Appointment requested!',`${booking.service} on ${fmtDate(booking.date)} at ${booking.time}. A confirmation will be sent to ${booking.email}.`);
+}
+
+function openCheckout(){
+  if(!cart.length){toast('Your bag is empty');return;}closeAll();
+  $('#checkoutBody').innerHTML=`<div class="field"><label>Full name</label><input id="cName" placeholder="Your name"></div>
+    <div class="field"><label>Email</label><input id="cEmail" type="email" placeholder="you@email.com"></div>
+    <div class="field"><label>Delivery address</label><textarea id="cAddr" rows="2" placeholder="Where should we send it?"></textarea></div>
+    <div style="margin:18px 0 10px">${cart.map(it=>`<div class="summary-row"><span>${it.qty} × ${it.name}</span><span>${money(it.price*it.qty)}</span></div>`).join('')}
+      <div class="summary-row total"><span>Total</span><span>${money(cartTotal())}</span></div></div>
+    <button class="btn btn-gold" style="width:100%" onclick="confirmOrder()">Pay ${money(cartTotal())}</button>`;
+  openModal('#checkoutModal');
+}
+function confirmOrder(){
+  const name=$('#cName').value.trim(),email=$('#cEmail').value.trim(),addr=$('#cAddr').value.trim();
+  if(!name||!email||!addr){toast('Please complete your details');return;}
+  const record={type:'order',id:'OR-'+Date.now().toString().slice(-6),name,email,addr,
+    items:cart.map(i=>({name:i.name,qty:i.qty,price:i.price})),total:cartTotal(),
+    paid:!!CONFIG.paymentLink,status:CONFIG.paymentLink?'Paid':'Awaiting payment',at:new Date().toISOString()};
+  saveRecord('clb_orders',record);sendToOwner(record);
+  cart=[];saveCart();renderCart();
+  if(CONFIG.paymentLink)goToPayment();
+  showConfirm('Order placed!',`Thank you ${name} — a confirmation is on its way to ${email}.`);
+}
+
+function goToPayment(){window.open(CONFIG.paymentLink,'_blank');}
+function sendToOwner(record){if(!CONFIG.formspreeEndpoint)return;
+  fetch(CONFIG.formspreeEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(record)}).catch(()=>{});}
+function saveRecord(key,rec){const all=store.get(key);all.unshift(rec);store.set(key,all);}
+
+function showConfirm(title,msg){closeAll();
+  $('#checkoutBody').innerHTML=`<div style="text-align:center;padding:14px 0">
+    <div style="font-size:3rem;margin-bottom:10px">✦</div>
+    <h3 style="font-size:1.55rem;color:var(--plum);margin-bottom:10px">${title}</h3>
+    <p style="color:var(--muted);margin-bottom:6px">${msg}</p>
+    ${CONFIG.paymentLink?'<p style="color:var(--muted);font-size:.85rem">A secure payment window has opened in a new tab.</p>':'<div class="note" style="text-align:left">Demo mode: no payment was taken. Add your Stripe or PayPal link in CONFIG to charge the £10 deposit for real.</div>'}
+    <button class="btn btn-primary" style="margin-top:18px" onclick="closeAll()">Done</button></div>`;
+  openModal('#checkoutModal');
+}
+
+let ownerUnlocked=false,dashTab='bookings';
+function openOwner(){
+  if(!ownerUnlocked){$('#ownerBody').innerHTML=`<div class="field"><label>Enter owner passcode</label>
+    <input id="ownPass" type="password" placeholder="••••••" onkeydown="if(event.key==='Enter')unlockOwner()"></div>
+    <button class="btn btn-primary" style="width:100%" onclick="unlockOwner()">Unlock</button>`;}
+  else renderDash();
+  openModal('#ownerModal');
+}
+function unlockOwner(){if($('#ownPass').value===CONFIG.ownerPasscode){ownerUnlocked=true;renderDash();}else toast('Incorrect passcode');}
+function renderDash(){
+  const bookings=store.get('clb_bookings'),orders=store.get('clb_orders');
+  const revenue=bookings.reduce((a,b)=>a+(b.deposit||0),0)+orders.reduce((a,o)=>a+o.total,0);
+  $('#ownerBody').innerHTML=`<div class="dash-stats">
+      <div class="dash-stat"><b>${bookings.length}</b><small>Bookings</small></div>
+      <div class="dash-stat"><b>${orders.length}</b><small>Orders</small></div>
+      <div class="dash-stat"><b>${money(revenue)}</b><small>Collected</small></div></div>
+    <div class="dash-tabs">
+      <button class="dash-tab ${dashTab==='bookings'?'active':''}" onclick="dashTab='bookings';renderDash()">Appointments</button>
+      <button class="dash-tab ${dashTab==='orders'?'active':''}" onclick="dashTab='orders';renderDash()">Orders</button></div>
+    <div id="dashList"></div>
+    <div class="dash-actions"><button class="link-btn" onclick="exportData()">Export all (CSV)</button>
+      <button class="link-btn" onclick="clearData()">Clear records</button></div>`;
+  const list=$('#dashList');
+  if(dashTab==='bookings'){
+    list.innerHTML=bookings.length?bookings.map(b=>`<div class="record"><div class="r-top"><b>${b.service}</b><span class="badge ${b.paid?'paid':''}">${b.status}</span></div>
+      <div class="r-meta">${fmtDate(b.date)} · ${b.time}${b.size?' · '+b.size:''}<br>${b.name} · ${b.email} · ${b.phone}
+      ${b.notes?'<br><i>“'+b.notes+'”</i>':''}<br>Deposit ${money(b.deposit||0)} · base from ${money(b.price)} · #${b.id}</div></div>`).join('')
+      :`<div class="dash-empty">Appointments are booked through the scheduler, so they live in your <b>Acuity dashboard</b> — log in at acuityscheduling.com to view your calendar, clients and deposits. This tab tracks any bookings taken outside Acuity.</div>`;
+  } else {
+    list.innerHTML=orders.length?orders.map(o=>`<div class="record"><div class="r-top"><b>Order #${o.id}</b><span class="badge ${o.paid?'paid':''}">${o.status}</span></div>
+      <div class="r-meta">${o.name} · ${o.email}<br>${o.addr}<br>${o.items.map(i=>i.qty+'× '+i.name).join(', ')}<br><b>${money(o.total)}</b></div></div>`).join('')
+      :`<div class="dash-empty">No orders yet.</div>`;
+  }
+}
+function exportData(){
+  const b=store.get('clb_bookings'),o=store.get('clb_orders');
+  let csv='Type,ID,Name,Email,Phone,Detail,Size,Deposit/Total,Status,Date\n';
+  b.forEach(x=>csv+=`Booking,${x.id},"${x.name}",${x.email},${x.phone||''},"${x.service} ${fmtDate(x.date)} ${x.time}",${x.size||''},${x.deposit||0},${x.status},${x.at}\n`);
+  o.forEach(x=>csv+=`Order,${x.id},"${x.name}",${x.email},,"${x.items.map(i=>i.qty+'x '+i.name).join('; ')}",,${x.total},${x.status},${x.at}\n`);
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='chis-luxe-records.csv';a.click();
+}
+function clearData(){if(confirm('Delete all stored bookings and orders? This cannot be undone.')){store.set('clb_bookings',[]);store.set('clb_orders',[]);renderDash();}}
+
+function fmtDate(d){if(!d)return'';const dt=new Date(d+'T00:00');return dt.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});}
+function openModal(sel){$('#overlay').classList.add('open');$(sel).classList.add('open');}
+function openCart(){$('#overlay').classList.add('open');$('#cartDrawer').classList.add('open');renderCart();}
+function closeAll(){document.querySelectorAll('.modal,.drawer,.overlay').forEach(e=>e.classList.remove('open'));}
+function toggleMenu(){$('#navLinks').classList.toggle('open');}
+function closeMenu(){$('#navLinks').classList.remove('open');}
+function toast(msg){const t=$('#toast');t.innerHTML='✦ '+msg;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),2600);}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll();});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+function checkOwnerHash(){if(location.hash==='#owner')openOwner();}
+window.addEventListener('hashchange',checkOwnerHash);checkOwnerHash();
+if(CONFIG.logo){document.querySelectorAll('.brand .mark').forEach(m=>{m.style.background='#fff';m.innerHTML='<img src="'+CONFIG.logo+'" alt="Chi\'s Luxe Beauties logo">';});}
+renderCatTabs();renderServices();renderFilters();renderProducts();saveCart();
+</script>
+</body>
+</html>
